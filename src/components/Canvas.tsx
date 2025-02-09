@@ -10,11 +10,10 @@ import ReactFlow, {
   ConnectionMode,
   Panel,
 } from "reactflow";
-import { Play, Square } from "lucide-react";
 import "reactflow/dist/style.css";
 import React from "react";
 
-const nodeTypes = ["Timer", "SQL", "HTTP", "Router"];
+const tools = ["Docker", "Node.Js", "Versioning", "Route Controller"];
 
 const Canvas = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
@@ -84,16 +83,6 @@ const Canvas = () => {
             <span className="text-gray-600">test</span>
           </div>
         </div>
-
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-2">
-            <Play className="w-4 h-4 text-gray-600" />
-            <Square className="w-4 h-4 text-gray-600" />
-          </div>
-          <button className="px-3 py-1 bg-purple-600 text-white text-sm rounded">
-            Save
-          </button>
-        </div>
       </div>
 
       <div className="flex-1 relative">
@@ -115,12 +104,12 @@ const Canvas = () => {
             className="bg-white p-4 rounded-lg shadow-lg"
           >
             <div className="flex flex-col space-y-2">
-              {nodeTypes.map((type) => (
+              {tools.map((type) => (
                 <div
                   key={type}
                   draggable
                   onDragStart={(e) => onDragStart(e, type)}
-                  className="w-36 py-2 px-4 bg-white rounded border shadow-sm flex items-center justify-center cursor-move hover:border-purple-500 transition-colors"
+                  className="w-36 py-2 px-4 bg-white rounded border shadow-sm flex items-center tex-center justify-center cursor-move hover:border-purple-500 transition-colors"
                 >
                   {type}
                 </div>

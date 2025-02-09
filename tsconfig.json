@@ -19,10 +19,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@/*": ["/*"],
-      "@components/*": ["./components/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@lib/*": ["./lib/*"],
+      "@/*": ["./src/*"],
+      // "@components/*": ["./components/*"],
+      // "@hooks/*": ["./hooks/*"],
+      // "@lib/*": ["./lib/*"],
       "tslib": ["/node_modules/tslib/tslib.d.ts"]
     }
   },
