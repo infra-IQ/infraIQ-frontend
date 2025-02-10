@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { NodeProps, Handle, Position } from "reactflow";
 import { Input } from "./Input";
 
-const TextInputNode = ({ id, data }: NodeProps) => {
+const TextInputNode = ({ data }: NodeProps) => {
   return (
     <div className="p-4 bg-white border rounded shadow w-[150px]">
       <Handle type="target" position={Position.Top} />
