@@ -12,8 +12,14 @@ import ReactFlow, {
 } from "reactflow";
 import "reactflow/dist/style.css";
 import React from "react";
+import TextInputNode from "./ui/CustomNode";
 
 const tools = ["Docker", "Node.Js", "Versioning", "Route Controller"];
+const databases = ["PostgreSQL", "mySQLl", "MongoDB"];
+
+const nodeTypes = {
+  textInputNode: TextInputNode,
+};
 
 const Canvas = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
@@ -49,17 +55,11 @@ const Canvas = () => {
 
       const newNode: Node = {
         id: `${type}-${Date.now()}`,
-        type: "default",
+        type: "textInputNode",
         position,
         data: { label: type },
         style: {
           background: "white",
-          border: "1px solid #e2e8f0",
-          borderRadius: "0.375rem",
-          padding: "8px 16px",
-          fontSize: "14px",
-          boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-          width: 150,
         },
       };
 
@@ -94,6 +94,7 @@ const Canvas = () => {
           onConnect={onConnect}
           onDrop={onDrop}
           onDragOver={onDragOver}
+          nodeTypes={nodeTypes}
           connectionMode={ConnectionMode.Loose}
           fitView
         >
@@ -105,6 +106,23 @@ const Canvas = () => {
           >
             <div className="flex flex-col space-y-2">
               {tools.map((type) => (
+                <div
+                  key={type}
+                  draggable
+                  onDragStart={(e) => onDragStart(e, type)}
+                  className="w-36 py-2 px-4 bg-white rounded border shadow-sm flex items-center tex-center justify-center cursor-move hover:border-purple-500 transition-colors"
+                >
+                  {type}
+                </div>
+              ))}
+            </div>
+          </Panel>
+          <Panel
+            position="top-right"
+            className="bg-white p-4 rounded-lg shadow-lg"
+          >
+            <div className="flex flex-col space-y-2">
+              {databases.map((type) => (
                 <div
                   key={type}
                   draggable
