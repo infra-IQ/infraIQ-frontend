@@ -1,4 +1,4 @@
-import { useCallback, DragEvent } from "react";
+import { useCallback, DragEvent, useEffect } from "react";
 import ReactFlow, {
   Node,
   Controls,
@@ -29,6 +29,10 @@ const Canvas = () => {
     (params: Connection) => setEdges((eds) => addEdge(params, eds)),
     [setEdges]
   );
+
+  useEffect(() => {
+    console.log({ edges });
+  }, [edges]);
 
   const onDragOver = useCallback((event: DragEvent) => {
     event.preventDefault();
